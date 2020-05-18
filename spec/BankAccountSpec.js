@@ -30,5 +30,10 @@ describe('Account', function () {
       account.makeWithdrawal(20)
       expect(account.balance).toEqual(10)
     })
+
+    it('user cannot withdraw more money than they have', function () {
+      account.setBalance(30)
+      expect(account.makeWithdrawal(40)).toEqual('Not enough Money, cannot withdraw')
+    })
   })
 })

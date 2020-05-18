@@ -11,5 +11,8 @@ Account.prototype.makeDeposit = function (amount) {
 }
 
 Account.prototype.makeWithdrawal = function (amount) {
+  if (amount > this.balance) {
+    return 'Not enough Money, cannot withdraw'
+  }
   this.balance -= amount
 }
