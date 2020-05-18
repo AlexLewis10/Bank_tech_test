@@ -18,3 +18,7 @@ Account.prototype.makeWithdrawal = function (amount, date) {
   this.balance -= amount
   return date
 }
+
+Account.prototype.formatDate = function (date) {
+  return date
+}

@@ -45,4 +45,10 @@ describe('Account', function () {
       expect(account.makeWithdrawal(20, '10-01-2012')).toEqual('10-01-2012')
     })
   })
+
+  describe('date is put into the correct format', function () {
+    it('it returns the date', function () {
+      expect(account.formatDate('10-01-2012')).toEqual('10-01-2012')
+    })
+  })
 })
