@@ -35,11 +35,6 @@ describe('Account', function () {
       account.setBalance(30)
       expect(account.makeWithdrawal(40)).toEqual('Not enough Money, cannot withdraw')
     })
-
-    it('user can add the date in when making a withdrawal', function () {
-      account.setBalance(30)
-      expect(account.makeWithdrawal(20, '10-01-2012')).toEqual('10/01/2012')
-    })
   })
 
   describe('date is put into the correct format', function () {
@@ -53,9 +48,15 @@ describe('Account', function () {
       expect(account.transactionHistory).toEqual([])
     })
 
-    it('receives a transaction from debit and passes to transaction history', function () {
+    it('receives a transaction from deposit and passes to transaction history', function () {
       account.makeDeposit(20, '10-01-2012')
       expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20]])
+    })
+
+    it('receives a transaction from withdrawal and passes to transaction history', function () {
+      account.setBalance(30)
+      account.makeWithdrawal(20, '10-01-2012')
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Debit', 10]])
     })
 
     it('can add multiple transactions to transaction history', function () {

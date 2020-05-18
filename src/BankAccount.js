@@ -19,7 +19,9 @@ Account.prototype.makeWithdrawal = function (amount, date) {
     return 'Not enough Money, cannot withdraw'
   }
   this.balance -= amount
-  return this.formatDate(date)
+  var accountBalance = this.balance
+  var transactionDate = this.formatDate(date)
+  this.addToTransactionHistory(transactionDate, 'Debit', accountBalance)
 }
 
 // methods below here should be private
