@@ -54,7 +54,11 @@ describe('Account', function () {
 
   describe('transaction is added to an array', function () {
     it('method returns an array', function () {
-      expect(account.addToTransactionHistory()).toEqual([])
+      expect(account.addToTransactionHistory('I am a transaction')).toEqual(['I am a transaction'])
+    })
+
+    it('user has a transaction history array', function () {
+      expect(account.transactionHistory).toEqual([])
     })
   })
 })

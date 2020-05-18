@@ -1,5 +1,6 @@
 function Account () {
   this.balance = 0
+  this.transactionHistory = []
 }
 
 Account.prototype.setBalance = function (amount) {
@@ -26,6 +27,6 @@ Account.prototype.formatDate = function (date) {
   return date
 }
 
-Account.prototype.addToTransactionHistory = function () {
-  return []
+Account.prototype.addToTransactionHistory = function (transaction) {
+  return [transaction]
 }
