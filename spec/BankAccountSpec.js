@@ -62,8 +62,9 @@ describe('Account', function () {
       expect(account.transactionHistory).toEqual([['I am a transaction']])
     })
 
-    it('receives a transaction from debit', function () {
-      expect(account.addToTransactionHistory('10/01/2012', 'Debit', '20')).toEqual(['10/01/2012', 'Debit', '20'])
+    it('receives a transaction from debit and passes to transaction history', function () {
+      account.addToTransactionHistory('10/01/2012', 'Debit', '20')
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Debit', '20']])
     })
 
     it('can add multiple transactions to transaction history', function () {

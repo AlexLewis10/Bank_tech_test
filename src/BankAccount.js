@@ -29,6 +29,5 @@ Account.prototype.formatDate = function (date) {
 }
 
 Account.prototype.addToTransactionHistory = function (date, type, balance) {
-  this.transactionHistory.push(['Hello'])
-  return [date, type, balance]
+  this.transactionHistory.push([date, type, balance])
 }
