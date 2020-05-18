@@ -7,12 +7,13 @@ describe('Account', function () {
   })
 
   describe('Account has a balance', function () {
-    it('has a balance', function () {
+    it('unless balance is set, account has 0', function () {
       expect(account.balance).toEqual(0)
     })
 
     it('balance can be set', function () {
-      expect(account.setBalance()).toEqual(3000)
+      account.setBalance(3000)
+      expect(account.balance).toEqual(3000)
     })
   })
 })
