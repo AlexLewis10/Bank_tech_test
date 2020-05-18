@@ -21,8 +21,8 @@ So that I can deposit money,
 I would like to be able to add money to my account
 
 As a user,
-So that I can deposit money,
-I would like to be able to add money to my account
+So that I can withdraw money,
+I would like to be able to take money from my account
 
 As a user,
 So that I can review all of my transactions,
@@ -31,7 +31,7 @@ I would like to be able view my transactions on a bank statement which includes 
 ```
 
 
-Acceptance criteria
+## Acceptance criteria
 Given a client makes a deposit of 1000 on 10-01-2012
 And a deposit of 2000 on 13-01-2012
 And a withdrawal of 500 on 14-01-2012
