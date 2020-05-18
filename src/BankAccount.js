@@ -20,6 +20,6 @@ Account.prototype.makeWithdrawal = function (amount, date) {
 }
 
 Account.prototype.formatDate = function (date) {
-  date = date.replace('-', '/')
+  date = date.replace(/-/g, '/')
   return date
 }

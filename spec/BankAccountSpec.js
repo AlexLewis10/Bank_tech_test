@@ -54,5 +54,9 @@ describe('Account', function () {
     it('when given a number and a dash it only replaces the dash', function () {
       expect(account.formatDate('01-')).toEqual('01/')
     })
+
+    it('when given a full date with 2 dashes it returns the date in the correct format', function () {
+      expect(account.formatDate('10-01-2012')).toEqual('10/01/2012')
+    })
   })
 })
