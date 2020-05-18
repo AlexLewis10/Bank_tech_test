@@ -28,5 +28,5 @@ Account.prototype.formatDate = function (date) {
 }
 
 Account.prototype.addToTransactionHistory = function (transaction) {
-  return [transaction]
+  this.transactionHistory.push([transaction])
 }
