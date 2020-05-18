@@ -26,7 +26,9 @@ describe('Account', function () {
 
   describe('User can make a withdrawal', function () {
     it('user can withdraw an amount and the balance is updated', function () {
-      expect(account.makeWithdrawal(20)).toEqual(20)
+      account.setBalance(30)
+      account.makeWithdrawal(20)
+      expect(account.balance).toEqual(10)
     })
   })
 })

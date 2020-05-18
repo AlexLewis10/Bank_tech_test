@@ -11,5 +11,5 @@ Account.prototype.makeDeposit = function (amount) {
 }
 
 Account.prototype.makeWithdrawal = function (amount) {
-  return amount
+  this.balance -= amount
 }
