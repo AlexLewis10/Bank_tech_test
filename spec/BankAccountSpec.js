@@ -16,4 +16,11 @@ describe('Account', function () {
       expect(account.balance).toEqual(3000)
     })
   })
+
+  describe('User can make a deposit', function () {
+    it('user can deposit an amount and the balance is update', function () {
+      account.makeDeposit(20)
+      expect(account.balance).toEqual(20)
+    })
+  })
 })
