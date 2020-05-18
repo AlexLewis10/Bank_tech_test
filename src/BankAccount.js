@@ -9,8 +9,9 @@ Account.prototype.setBalance = function (amount) {
 
 Account.prototype.makeDeposit = function (amount, date) {
   this.balance += amount
+  var accountBalance = this.balance
   var transactionDate = this.formatDate(date)
-  this.addToTransactionHistory(transactionDate, 'Debit', this.balance)
+  this.addToTransactionHistory(transactionDate, 'Credit', accountBalance)
 }
 
 Account.prototype.makeWithdrawal = function (amount, date) {
@@ -28,6 +29,6 @@ Account.prototype.formatDate = function (date) {
   return date
 }
 
-Account.prototype.addToTransactionHistory = function (date, type, balance) {
-  this.transactionHistory.push([date, type, balance])
+Account.prototype.addToTransactionHistory = function (transactionDate, type, accountBalance) {
+  this.transactionHistory.push([transactionDate, type, accountBalance])
 }

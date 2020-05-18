@@ -22,10 +22,6 @@ describe('Account', function () {
       account.makeDeposit(20, '10-01-16')
       expect(account.balance).toEqual(20)
     })
-
-    it('user can add the date in when making a deposit', function () {
-      expect(account.makeDeposit(20, '10-01-2012')).toEqual('10/01/2012')
-    })
   })
 
   describe('User can make a withdrawal', function () {
@@ -57,21 +53,16 @@ describe('Account', function () {
       expect(account.transactionHistory).toEqual([])
     })
 
-    it('can add a transaction to transaction history', function () {
-      account.addToTransactionHistory('I am a transaction')
-      expect(account.transactionHistory).toEqual([['I am a transaction']])
-    })
-
     it('receives a transaction from debit and passes to transaction history', function () {
-      account.addToTransactionHistory('10/01/2012', 'Debit', '20')
-      expect(account.transactionHistory).toEqual([['10/01/2012', 'Debit', '20']])
+      account.makeDeposit(20, '10-01-2012')
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20]])
     })
 
     it('can add multiple transactions to transaction history', function () {
       for (var i = 0; i < 4; i++) {
-        account.addToTransactionHistory('I am a transaction')
+        account.makeDeposit(20, '10-01-2012')
       }
-      expect(account.transactionHistory).toEqual([['I am a transaction'], ['I am a transaction'], ['I am a transaction'], ['I am a transaction']])
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20], ['10/01/2012', 'Credit', 40], ['10/01/2012', 'Credit', 60], ['10/01/2012', 'Credit', 80]])
     })
   })
 })
