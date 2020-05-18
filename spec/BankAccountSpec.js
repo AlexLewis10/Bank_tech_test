@@ -19,19 +19,19 @@ describe('Account', function () {
 
   describe('User can make a deposit', function () {
     it('user can deposit an amount and the balance is updated', function () {
-      account.makeDeposit(20)
+      account.makeDeposit(20, '10-01-16')
       expect(account.balance).toEqual(20)
     })
 
     it('user can add the date in when making a deposit', function () {
-      expect(account.makeDeposit(20, '10-01-2012')).toEqual('10-01-2012')
+      expect(account.makeDeposit(20, '10-01-2012')).toEqual('10/01/2012')
     })
   })
 
   describe('User can make a withdrawal', function () {
     it('user can withdraw an amount and the balance is updated', function () {
       account.setBalance(30)
-      account.makeWithdrawal(20)
+      account.makeWithdrawal(20, '10-01-16')
       expect(account.balance).toEqual(10)
     })
 
@@ -42,7 +42,7 @@ describe('Account', function () {
 
     it('user can add the date in when making a withdrawal', function () {
       account.setBalance(30)
-      expect(account.makeWithdrawal(20, '10-01-2012')).toEqual('10-01-2012')
+      expect(account.makeWithdrawal(20, '10-01-2012')).toEqual('10/01/2012')
     })
   })
 
