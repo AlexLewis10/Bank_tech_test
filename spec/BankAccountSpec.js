@@ -47,8 +47,8 @@ describe('Account', function () {
   })
 
   describe('date is put into the correct format', function () {
-    it('it returns the date', function () {
-      expect(account.formatDate('10-01-2012')).toEqual('10-01-2012')
+    it('when given a dash it returns a slash', function () {
+      expect(account.formatDate('-')).toEqual('/')
     })
   })
 })
