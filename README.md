@@ -43,6 +43,10 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 
+•• Notes ••
+- Have not currently factored in pence because acceptance criteria only uses .00 for decimal places.
+- use number.toFixed(2) to convert number into 2 decimals but only to display to user.
+
 ## Setup
 
 ### Linting

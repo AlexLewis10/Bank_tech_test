@@ -22,6 +22,10 @@ describe('Account', function () {
       account.makeDeposit(20)
       expect(account.balance).toEqual(20)
     })
+
+    it('user can add the date in when making a deposit', function () {
+      expect(account.makeDeposit(20, '10-01-2012')).toEqual('10-01-2012')
+    })
   })
 
   describe('User can make a withdrawal', function () {
@@ -34,6 +38,11 @@ describe('Account', function () {
     it('user cannot withdraw more money than they have', function () {
       account.setBalance(30)
       expect(account.makeWithdrawal(40)).toEqual('Not enough Money, cannot withdraw')
+    })
+
+    it('user can add the date in when making a withdrawal', function () {
+      account.setBalance(30)
+      expect(account.makeWithdrawal(20, '10-01-2012')).toEqual('10-01-2012')
     })
   })
 })
