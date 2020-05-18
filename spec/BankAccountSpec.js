@@ -51,4 +51,10 @@ describe('Account', function () {
       expect(account.formatDate('10-01-2012')).toEqual('10/01/2012')
     })
   })
+
+  describe('transaction is added to an array', function () {
+    it('method returns an array', function () {
+      expect(account.addToTransactionHistory()).toEqual([])
+    })
+  })
 })

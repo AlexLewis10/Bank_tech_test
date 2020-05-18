@@ -19,7 +19,13 @@ Account.prototype.makeWithdrawal = function (amount, date) {
   return this.formatDate(date)
 }
 
+// methods below here should be private
+
 Account.prototype.formatDate = function (date) {
   date = date.replace(/-/g, '/')
   return date
+}
+
+Account.prototype.addToTransactionHistory = function () {
+  return []
 }
