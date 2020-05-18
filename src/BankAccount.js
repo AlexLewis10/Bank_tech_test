@@ -9,3 +9,7 @@ Account.prototype.setBalance = function (balance) {
 Account.prototype.makeDeposit = function (amount) {
   this.balance += amount
 }
+
+Account.prototype.makeWithdrawal = function (amount) {
+  return amount
+}

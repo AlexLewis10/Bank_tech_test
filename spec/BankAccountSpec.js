@@ -18,9 +18,15 @@ describe('Account', function () {
   })
 
   describe('User can make a deposit', function () {
-    it('user can deposit an amount and the balance is update', function () {
+    it('user can deposit an amount and the balance is updated', function () {
       account.makeDeposit(20)
       expect(account.balance).toEqual(20)
+    })
+  })
+
+  describe('User can make a withdrawal', function () {
+    it('user can withdraw an amount and the balance is updated', function () {
+      expect(account.makeWithdrawal(20)).toEqual(20)
     })
   })
 })
