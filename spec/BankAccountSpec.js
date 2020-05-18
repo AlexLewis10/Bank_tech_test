@@ -61,5 +61,12 @@ describe('Account', function () {
       account.addToTransactionHistory('I am a transaction')
       expect(account.transactionHistory).toEqual([['I am a transaction']])
     })
+
+    it('can add multiple transactions to transaction history', function () {
+      for (var i = 0; i < 4; i++) {
+        account.addToTransactionHistory('I am a transaction')
+      }
+      expect(account.transactionHistory).toEqual([['I am a transaction'], ['I am a transaction'], ['I am a transaction'], ['I am a transaction']])
+    })
   })
 })
