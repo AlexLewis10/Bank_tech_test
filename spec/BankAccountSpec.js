@@ -50,5 +50,9 @@ describe('Account', function () {
     it('when given a dash it returns a slash', function () {
       expect(account.formatDate('-')).toEqual('/')
     })
+
+    it('when given a number and a dash it only replaces the dash', function () {
+      expect(account.formatDate('01-')).toEqual('01/')
+    })
   })
 })
