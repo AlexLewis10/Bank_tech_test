@@ -10,5 +10,9 @@ describe('Account', function () {
     it('has a balance', function () {
       expect(account.balance).toEqual(0)
     })
+
+    it('balance can be set', function () {
+      expect(account.setBalance()).toEqual(3000)
+    })
   })
 })
