@@ -50,20 +50,20 @@ describe('Account', function () {
 
     it('receives a transaction from deposit and passes to transaction history', function () {
       account.makeDeposit(20, '10-01-2012')
-      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20]])
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20, 20]])
     })
 
     it('receives a transaction from withdrawal and passes to transaction history', function () {
       account.setBalance(30)
       account.makeWithdrawal(20, '10-01-2012')
-      expect(account.transactionHistory).toEqual([['10/01/2012', 'Debit', 10]])
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Debit', 20, 10]])
     })
 
     it('can add multiple transactions to transaction history', function () {
       for (var i = 0; i < 4; i++) {
         account.makeDeposit(20, '10-01-2012')
       }
-      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20], ['10/01/2012', 'Credit', 40], ['10/01/2012', 'Credit', 60], ['10/01/2012', 'Credit', 80]])
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20, 20], ['10/01/2012', 'Credit', 20, 40], ['10/01/2012', 'Credit', 20, 60], ['10/01/2012', 'Credit', 20, 80]])
     })
   })
 })

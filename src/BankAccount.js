@@ -11,7 +11,7 @@ Account.prototype.makeDeposit = function (amount, date) {
   this.balance += amount
   var accountBalance = this.balance
   var transactionDate = this.formatDate(date)
-  this.addToTransactionHistory(transactionDate, 'Credit', accountBalance)
+  this.addToTransactionHistory(transactionDate, 'Credit', amount, accountBalance)
 }
 
 Account.prototype.makeWithdrawal = function (amount, date) {
@@ -21,7 +21,7 @@ Account.prototype.makeWithdrawal = function (amount, date) {
   this.balance -= amount
   var accountBalance = this.balance
   var transactionDate = this.formatDate(date)
-  this.addToTransactionHistory(transactionDate, 'Debit', accountBalance)
+  this.addToTransactionHistory(transactionDate, 'Debit', amount, accountBalance)
 }
 
 // methods below here should be private
@@ -31,6 +31,6 @@ Account.prototype.formatDate = function (date) {
   return date
 }
 
-Account.prototype.addToTransactionHistory = function (transactionDate, type, accountBalance) {
-  this.transactionHistory.push([transactionDate, type, accountBalance])
+Account.prototype.addToTransactionHistory = function (transactionDate, type, amount, accountBalance) {
+  this.transactionHistory.push([transactionDate, type, amount, accountBalance])
 }
