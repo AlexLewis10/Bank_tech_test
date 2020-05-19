@@ -26,11 +26,12 @@ Account.prototype.makeWithdrawal = function (amount, date) {
 
 Account.prototype.createBankStatement = function () {
   var date = this.transactionHistory[0][0]
-  var type = this.transactionHistory[0][1]
   var amount = this.transactionHistory[0][2]
   var balance = this.transactionHistory[0][3]
-
-  return `date || credit || debit || balance \n ${date} || ${type} || ${amount} || ${balance}`
+  if (this.transactionHistory[0][1] === 'Credit') {
+    return `date || credit || debit || balance \n ${date} || ${amount} || || ${balance}`
+  }
+  return `date || credit || debit || balance \n ${date} || || ${amount} || ${balance}`
 }
 
 // methods below here should be private
