@@ -66,4 +66,11 @@ describe('Account', function () {
       expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20, 20], ['10/01/2012', 'Credit', 20, 40], ['10/01/2012', 'Credit', 20, 60], ['10/01/2012', 'Credit', 20, 80]])
     })
   })
+
+  describe('can return a bank statement', function () {
+    it('prints the first line of the table', function () {
+      account.makeDeposit(20, '10-01-16')
+      expect(account.createBankStatement()).toEqual('date || credit || debit || balance')
+    })
+  })
 })

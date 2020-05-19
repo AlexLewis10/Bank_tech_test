@@ -24,6 +24,10 @@ Account.prototype.makeWithdrawal = function (amount, date) {
   this.addToTransactionHistory(transactionDate, 'Debit', amount, accountBalance)
 }
 
+Account.prototype.createBankStatement = function () {
+  return 'date || credit || debit || balance'
+}
+
 // methods below here should be private
 
 Account.prototype.formatDate = function (date) {
@@ -34,3 +38,4 @@ Account.prototype.formatDate = function (date) {
 Account.prototype.addToTransactionHistory = function (transactionDate, type, amount, accountBalance) {
   this.transactionHistory.push([transactionDate, type, amount, accountBalance])
 }
+
