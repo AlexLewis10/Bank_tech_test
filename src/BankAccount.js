@@ -34,12 +34,10 @@ Account.prototype.createBankStatement = function () {
     if (this.transactionHistory[i][1] === 'Credit') {
       var newString = `\n ${date} || ${amount} || || ${balance}`
       this.transactionString = `${this.transactionString}` + newString
-      // return `date || credit || debit || balance \n ${date} || ${amount} || || ${balance}`
     } else {
       newString = `\n ${date} || || ${amount} || ${balance}`
       this.transactionString = `${this.transactionString}` + newString
     }
-    // return `date || credit || debit || balance \n ${date} || || ${amount} || ${balance}`
   }
   return this.transactionString
 }
