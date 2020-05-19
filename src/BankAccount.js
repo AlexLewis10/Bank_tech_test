@@ -46,5 +46,5 @@ Account.prototype.addToTransactionHistory = function (transactionDate, type, amo
 }
 
 Account.prototype.addDecimalPlaces = function (number) {
-  return '20.00'
+  return number.toFixed(2)
 }
