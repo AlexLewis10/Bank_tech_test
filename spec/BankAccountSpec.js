@@ -97,8 +97,20 @@ describe('Account', function () {
   })
 
   describe('updates each line to add to the bank statement', function () {
-    it('it returns a line for debit', function () {
+    it('it returns a line for credit', function () {
       expect(account.addCreditToStatement('10/01/2012', '1000.00', '1000.00')).toEqual('date || credit || debit || balance\n 10/01/2012 || 1000.00 || || 1000.00')
+    })
+
+    it('it returns a line for debit', function () {
+      expect(account.addDebitToStatement('11/01/2012', '500.00', '500.00')).toEqual('date || credit || debit || balance\n 11/01/2012 || || 500.00 || 500.00')
+    })
+  })
+
+  describe('resets the transaction string for a new statement', function () {
+    it('resets the transaction string', function () {
+      account.transactionString = "I'm an incorrect string"
+      account.resetTransactionString()
+      expect(account.transactionString).toEqual('date || credit || debit || balance')
     })
   })
 
