@@ -68,9 +68,16 @@ describe('Account', function () {
   })
 
   describe('can return a bank statement', function () {
-    it('prints the first line of the table', function () {
+    it('returns a bank statement with a credit', function () {
       account.makeDeposit(20, '10-01-2012')
       expect(account.createBankStatement()).toEqual('date || credit || debit || balance \n 10/01/2012 || Credit || 20 || 20')
     })
+
+    it('returns a bank statement with a debit', function () {
+      account.setBalance(30)
+      account.makeWithdrawal(20, '05-02-2013')
+      expect(account.createBankStatement()).toEqual('date || credit || debit || balance \n 05/02/2013 || Debit || 20 || 10')
+    })
+
   })
 })
