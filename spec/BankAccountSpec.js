@@ -59,11 +59,19 @@ describe('Account', function () {
       expect(account.transactionHistory).toEqual([['10/01/2012', 'Debit', 20, 10]])
     })
 
+    // This test now useless superseded by the one after?
     it('can add multiple transactions to transaction history', function () {
       for (var i = 0; i < 4; i++) {
         account.makeDeposit(20, '10-01-2012')
       }
-      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20, 20], ['10/01/2012', 'Credit', 20, 40], ['10/01/2012', 'Credit', 20, 60], ['10/01/2012', 'Credit', 20, 80]])
+      expect(account.transactionHistory).toEqual([['10/01/2012', 'Credit', 20, 80], ['10/01/2012', 'Credit', 20, 60], ['10/01/2012', 'Credit', 20, 40], ['10/01/2012', 'Credit', 20, 20]])
+    })
+
+    it('the most recent transaction is at the front of the transaction history array', function () {
+      account.makeDeposit(1000, '10-01-2012')
+      account.makeDeposit(2000, '13-01-2012')
+      account.makeWithdrawal(500, '14-01-2012')
+      expect(account.transactionHistory).toEqual([['14/01/2012', 'Debit', 500, 2500], ['13/01/2012', 'Credit', 2000, 3000], ['10/01/2012', 'Credit', 1000, 1000]])
     })
   })
 

@@ -42,7 +42,7 @@ Account.prototype.formatDate = function (date) {
 }
 
 Account.prototype.addToTransactionHistory = function (transactionDate, type, amount, accountBalance) {
-  this.transactionHistory.push([transactionDate, type, amount, accountBalance])
+  this.transactionHistory.unshift([transactionDate, type, amount, accountBalance])
 }
 
 Account.prototype.addDecimalPlaces = function (number) {
