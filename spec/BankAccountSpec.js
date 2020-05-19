@@ -68,6 +68,7 @@ describe('Account', function () {
     })
 
     it('the most recent transaction is at the front of the transaction history array', function () {
+      // Create helper method with acceptance criteria?
       account.makeDeposit(1000, '10-01-2012')
       account.makeDeposit(2000, '13-01-2012')
       account.makeWithdrawal(500, '14-01-2012')
@@ -85,6 +86,12 @@ describe('Account', function () {
       account.setBalance(30)
       account.makeWithdrawal(20, '05-02-2013')
       expect(account.createBankStatement()).toEqual('date || credit || debit || balance \n 05/02/2013 || || 20.00 || 10.00')
+    })
+
+    it('returns an ordered bank statement', function () {
+      // account.makeDeposit(1000, '10-01-2012')
+      account.makeDeposit(2000, '13-01-2012')
+      expect(account.createBankStatement()).toEqual('date || credit || debit || balance \n 13/01/2012 || 2000.00 || || 2000.00')// 10/01/2012 || 1000.00 || || 1000.00
     })
   })
 

@@ -47,6 +47,7 @@ date || credit || debit || balance
 - Have not currently factored in pence because acceptance criteria only uses .00 for decimal places.
 - use number.toFixed(2) to convert number into 2 decimals but only to display to user.
 - check if balance is 20 and the user tries to withdraw 20 works
+- Should I make a helper method for the acceptance criteria
 
 ## Setup
 
