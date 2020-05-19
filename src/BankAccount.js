@@ -30,7 +30,7 @@ Account.prototype.createBankStatement = function () {
   var amount = this.transactionHistory[0][2]
   var balance = this.transactionHistory[0][3]
 
-  return 'date || credit || debit || balance \n' + date + ' ' + type + ' ' + amount + ' ' + balance
+  return `date || credit || debit || balance \n ${date} || ${type} || ${amount} || ${balance}`
 }
 
 // methods below here should be private
