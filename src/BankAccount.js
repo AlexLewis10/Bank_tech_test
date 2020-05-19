@@ -4,15 +4,11 @@ function Account () {
   this.transactionString = 'date || credit || debit || balance'
 }
 
-Account.prototype.setBalance = function (amount) {
-  this.balance = amount
-}
-
 Account.prototype.makeDeposit = function (amount, date) {
   this.balance += amount
   var accountBalance = this.balance
-  var transactionDate = this.formatDate(date)
-  this.addToTransactionHistory(transactionDate, 'Credit', amount, accountBalance)
+  var transactionDate = this._formatDate(date)
+  this._addToTransactionHistory(transactionDate, 'Credit', amount, accountBalance)
 }
 
 Account.prototype.makeWithdrawal = function (amount, date) {
@@ -21,52 +17,55 @@ Account.prototype.makeWithdrawal = function (amount, date) {
   }
   this.balance -= amount
   var accountBalance = this.balance
-  var transactionDate = this.formatDate(date)
-  this.addToTransactionHistory(transactionDate, 'Debit', amount, accountBalance)
+  var transactionDate = this._formatDate(date)
+  this._addToTransactionHistory(transactionDate, 'Debit', amount, accountBalance)
 }
 
 Account.prototype.createBankStatement = function () {
-  this.resetTransactionString()
+  this._resetTransactionString()
   for (var i = 0; i < this.transactionHistory.length; i++) {
     var date = this.transactionHistory[i][0]
-    var amount = this.addDecimalPlaces(this.transactionHistory[i][2])
-    var balance = this.addDecimalPlaces(this.transactionHistory[i][3])
+    var amount = this._addDecimalPlaces(this.transactionHistory[i][2])
+    var balance = this._addDecimalPlaces(this.transactionHistory[i][3])
     if (this.transactionHistory[i][1] === 'Credit') {
-      this.addCreditToStatement(date, amount, balance)
+      this._addCreditToStatement(date, amount, balance)
     } else {
-      this.addDebitToStatement(date, amount, balance)
+      this._addDebitToStatement(date, amount, balance)
     }
   }
   return this.transactionString
 }
 
-// methods below here should be private
-
-Account.prototype.addCreditToStatement = function (date, amount, balance) {
+Account.prototype._addCreditToStatement = function (date, amount, balance) {
   var creditString = `\n ${date} || ${amount} || || ${balance}`
   this.transactionString = `${this.transactionString}` + creditString
   return this.transactionString
 }
 
-Account.prototype.addDebitToStatement = function (date, amount, balance) {
+Account.prototype._addDebitToStatement = function (date, amount, balance) {
   var debitString = `\n ${date} || || ${amount} || ${balance}`
   this.transactionString = `${this.transactionString}` + debitString
   return this.transactionString
 }
 
-Account.prototype.resetTransactionString = function () {
+Account.prototype._resetTransactionString = function () {
   this.transactionString = 'date || credit || debit || balance'
 }
 
-Account.prototype.formatDate = function (date) {
+Account.prototype._formatDate = function (date) {
   date = date.replace(/-/g, '/')
   return date
 }
 
-Account.prototype.addToTransactionHistory = function (transactionDate, type, amount, accountBalance) {
+Account.prototype._addToTransactionHistory = function (transactionDate, type, amount, accountBalance) {
   this.transactionHistory.unshift([transactionDate, type, amount, accountBalance])
 }
 
-Account.prototype.addDecimalPlaces = function (number) {
+Account.prototype._addDecimalPlaces = function (number) {
   return number.toFixed(2)
+}
+
+// Method made only for testing purposes
+Account.prototype._setBalance = function (amount) {
+  this.balance = amount
 }

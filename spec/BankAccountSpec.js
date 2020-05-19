@@ -12,7 +12,7 @@ describe('Account', function () {
     })
 
     it('balance can be set', function () {
-      account.setBalance(3000)
+      account._setBalance(3000)
       expect(account.balance).toEqual(3000)
     })
   })
@@ -26,20 +26,20 @@ describe('Account', function () {
 
   describe('User can make a withdrawal', function () {
     it('user can withdraw an amount and the balance is updated', function () {
-      account.setBalance(30)
+      account._setBalance(30)
       account.makeWithdrawal(20, '10-01-16')
       expect(account.balance).toEqual(10)
     })
 
     it('user cannot withdraw more money than they have', function () {
-      account.setBalance(30)
+      account._setBalance(30)
       expect(account.makeWithdrawal(40)).toEqual('Not enough Money, cannot withdraw')
     })
   })
 
   describe('date is put into the correct format', function () {
     it('when given a full date with 2 dashes it returns the date in the correct format', function () {
-      expect(account.formatDate('10-01-2012')).toEqual('10/01/2012')
+      expect(account._formatDate('10-01-2012')).toEqual('10/01/2012')
     })
   })
 
@@ -54,7 +54,7 @@ describe('Account', function () {
     })
 
     it('receives a transaction from withdrawal and passes to transaction history', function () {
-      account.setBalance(30)
+      account._setBalance(30)
       account.makeWithdrawal(20, '10-01-2012')
       expect(account.transactionHistory).toEqual([['10/01/2012', 'Debit', 20, 10]])
     })
@@ -83,7 +83,7 @@ describe('Account', function () {
     })
 
     it('returns a bank statement with a debit', function () {
-      account.setBalance(30)
+      account._setBalance(30)
       account.makeWithdrawal(20, '05-02-2013')
       expect(account.createBankStatement()).toEqual('date || credit || debit || balance\n 05/02/2013 || || 20.00 || 10.00')
     })
@@ -98,25 +98,25 @@ describe('Account', function () {
 
   describe('updates each line to add to the bank statement', function () {
     it('it returns a line for credit', function () {
-      expect(account.addCreditToStatement('10/01/2012', '1000.00', '1000.00')).toEqual('date || credit || debit || balance\n 10/01/2012 || 1000.00 || || 1000.00')
+      expect(account._addCreditToStatement('10/01/2012', '1000.00', '1000.00')).toEqual('date || credit || debit || balance\n 10/01/2012 || 1000.00 || || 1000.00')
     })
 
     it('it returns a line for debit', function () {
-      expect(account.addDebitToStatement('11/01/2012', '500.00', '500.00')).toEqual('date || credit || debit || balance\n 11/01/2012 || || 500.00 || 500.00')
+      expect(account._addDebitToStatement('11/01/2012', '500.00', '500.00')).toEqual('date || credit || debit || balance\n 11/01/2012 || || 500.00 || 500.00')
     })
   })
 
   describe('resets the transaction string for a new statement', function () {
     it('resets the transaction string', function () {
       account.transactionString = "I'm an incorrect string"
-      account.resetTransactionString()
+      account._resetTransactionString()
       expect(account.transactionString).toEqual('date || credit || debit || balance')
     })
   })
 
   describe('adds decimal places to amount and balance from transactionHistory', function () {
     it('adds two decimal places to the amount', function () {
-      expect(account.addDecimalPlaces(20)).toEqual('20.00')
+      expect(account._addDecimalPlaces(20)).toEqual('20.00')
     })
   })
 })
