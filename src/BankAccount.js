@@ -43,10 +43,9 @@ Account.prototype.createBankStatement = function () {
 // methods below here should be private
 
 Account.prototype.addCreditToStatement = function (date, amount, balance) {
-  var debitString = `${date} || ${amount} || || ${balance}`
-  return debitString
-
-
+  var debitString = `\n ${date} || ${amount} || || ${balance}`
+  this.transactionString = `${this.transactionString}` + debitString
+  return this.transactionString
 }
 
 Account.prototype.formatDate = function (date) {
