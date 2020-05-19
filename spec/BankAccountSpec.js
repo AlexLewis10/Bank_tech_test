@@ -78,6 +78,11 @@ describe('Account', function () {
       account.makeWithdrawal(20, '05-02-2013')
       expect(account.createBankStatement()).toEqual('date || credit || debit || balance \n 05/02/2013 || || 20 || 10')
     })
+  })
 
+  describe('adds decimal places to amount and balance from transactionHistory', function () {
+    it('adds two decimal places to the amount', function () {
+      expect(account.addDecimalPlaces(20)).toEqual('20.00')
+    })
   })
 })
