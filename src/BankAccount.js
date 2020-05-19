@@ -26,23 +26,28 @@ Account.prototype.makeWithdrawal = function (amount, date) {
 }
 
 Account.prototype.createBankStatement = function () {
-  this.transactionString = 'date || credit || debit || balance'
+  this.resetTransactionString()
   for (var i = 0; i < this.transactionHistory.length; i++) {
     var date = this.transactionHistory[i][0]
     var amount = this.addDecimalPlaces(this.transactionHistory[i][2])
     var balance = this.addDecimalPlaces(this.transactionHistory[i][3])
     if (this.transactionHistory[i][1] === 'Credit') {
-      var newString = `\n ${date} || ${amount} || || ${balance}`
-      this.transactionString = `${this.transactionString}` + newString
+      this.addCreditToStatement(date, amount, balance)
     } else {
-      newString = `\n ${date} || || ${amount} || ${balance}`
-      this.transactionString = `${this.transactionString}` + newString
+      this.addDebitToStatement(date, amount, balance)
     }
   }
   return this.transactionString
 }
 
 // methods below here should be private
+
+Account.prototype.addCreditToStatement = function (date, amount, balance) {
+  var debitString = `${date} || ${amount} || || ${balance}`
+  return debitString
+
+
+}
 
 Account.prototype.formatDate = function (date) {
   date = date.replace(/-/g, '/')
