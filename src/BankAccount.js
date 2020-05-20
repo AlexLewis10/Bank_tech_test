@@ -23,6 +23,7 @@ Account.prototype.makeWithdrawal = function (amount, date) {
 
 Account.prototype.createBankStatement = function () {
   this._resetTransactionString()
+  // here down moved to BankStatement
   for (var i = 0; i < this.transactionHistory.length; i++) {
     var date = this.transactionHistory[i][0]
     var amount = this._addDecimalPlaces(this.transactionHistory[i][2])
@@ -43,6 +44,7 @@ Account.prototype._addCreditToStatement = function (date, amount, balance) {
   return this.transactionString
 }
 
+// moved to BankStatement
 Account.prototype._addDebitToStatement = function (date, amount, balance) {
   var debitString = `\n ${date} || || ${amount} || ${balance}`
   this.transactionString = `${this.transactionString}` + debitString

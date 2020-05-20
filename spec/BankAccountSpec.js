@@ -76,6 +76,7 @@ describe('Account', function () {
     })
   })
 
+  // moved to BankStatement
   describe('can return a bank statement', function () {
     it('returns a bank statement with a credit', function () {
       account.makeDeposit(20, '10-01-2012')
@@ -96,11 +97,12 @@ describe('Account', function () {
     })
   })
 
+  // moved to BankStatementSpec
   describe('updates each line to add to the bank statement', function () {
     it('it returns a line for credit', function () {
       expect(account._addCreditToStatement('10/01/2012', '1000.00', '1000.00')).toEqual('date || credit || debit || balance\n 10/01/2012 || 1000.00 || || 1000.00')
     })
-
+    // moved to BankStatementSpec
     it('it returns a line for debit', function () {
       expect(account._addDebitToStatement('11/01/2012', '500.00', '500.00')).toEqual('date || credit || debit || balance\n 11/01/2012 || || 500.00 || 500.00')
     })
