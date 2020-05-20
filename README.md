@@ -54,9 +54,7 @@ I decided that there would be four main functions. Two would take arguments from
 Other functions in the program would deal with formatting where appropriate.
 
 ## End Result
-
-
-
+![Working program](Screenshot 2020-05-20 at 14.24.59.png)
 
 ## Next Steps
 - Separate code into different classes where possible.
