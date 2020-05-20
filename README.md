@@ -58,6 +58,7 @@ Other functions in the program would deal with formatting where appropriate.
 
 ## Next Steps
 - Separate code into different classes where possible.
+- Call format date in the same place as adding decimal places?
 
 ## Technologies
 - JavaScript; language
