@@ -13,11 +13,10 @@
     "karma-coverage": "^2.0.2",
     "karma-coverage-istanbul-reporter": "^3.0.2",
     "karma-jasmine": "^3.1.1",
-    "karma-jasmine-html-reporter": "^1.5.4",
-    "nyc": "^15.0.1"
+    "karma-jasmine-html-reporter": "^1.5.4"
   },
   "dependencies": {},
   "scripts": {
-    "test": "karma"
+    "test": "karma start karma.conf.js"
   }
 }
