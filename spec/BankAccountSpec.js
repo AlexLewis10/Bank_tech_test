@@ -95,28 +95,4 @@ describe('Account', function () {
       expect(account.createBankStatement()).toEqual('date || credit || debit || balance\n 14/01/2012 || || 500.00 || 2500.00\n 13/01/2012 || 2000.00 || || 3000.00\n 10/01/2012 || 1000.00 || || 1000.00')
     })
   })
-
-  describe('updates each line to add to the bank statement', function () {
-    it('it returns a line for credit', function () {
-      expect(account._addCreditToStatement('10/01/2012', '1000.00', '1000.00')).toEqual('date || credit || debit || balance\n 10/01/2012 || 1000.00 || || 1000.00')
-    })
-
-    it('it returns a line for debit', function () {
-      expect(account._addDebitToStatement('11/01/2012', '500.00', '500.00')).toEqual('date || credit || debit || balance\n 11/01/2012 || || 500.00 || 500.00')
-    })
-  })
-
-  describe('resets the transaction string for a new statement', function () {
-    it('resets the transaction string', function () {
-      account.transactionString = "I'm an incorrect string"
-      account._resetTransactionString()
-      expect(account.transactionString).toEqual('date || credit || debit || balance')
-    })
-  })
-
-  describe('adds decimal places to amount and balance from transactionHistory', function () {
-    it('adds two decimal places to the amount', function () {
-      expect(account._addDecimalPlaces(20)).toEqual('20.00')
-    })
-  })
 })
