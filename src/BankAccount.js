@@ -36,6 +36,7 @@ Account.prototype.createBankStatement = function () {
   return this.transactionString
 }
 
+// moved to Bankstatement
 Account.prototype._addCreditToStatement = function (date, amount, balance) {
   var creditString = `\n ${date} || ${amount} || || ${balance}`
   this.transactionString = `${this.transactionString}` + creditString

@@ -13,6 +13,12 @@ describe('BankStatement', function () {
     })
   })
 
+  describe('updates each line to add to the bank statement', function () {
+    it('it returns a line for credit', function () {
+      expect(statement._addCreditToStatement('10/01/2012', '1000.00', '1000.00')).toEqual('date || credit || debit || balance\n 10/01/2012 || 1000.00 || || 1000.00')
+    })
+  })
+
   describe('adds decimal places to amount and balance from transactionHistory', function () {
     it('adds two decimal places to the amount', function () {
       expect(statement._addDecimalPlaces(20)).toEqual('20.00')

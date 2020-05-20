@@ -114,10 +114,10 @@ describe('Account', function () {
     })
   })
 
-  // move to BankStatement
-  // describe('adds decimal places to amount and balance from transactionHistory', function () {
-  //   it('adds two decimal places to the amount', function () {
-  //     expect(account._addDecimalPlaces(20)).toEqual('20.00')
-  //   })
-  // })
+  // moved to BankStatement
+  describe('adds decimal places to amount and balance from transactionHistory', function () {
+    it('adds two decimal places to the amount', function () {
+      expect(account._addDecimalPlaces(20)).toEqual('20.00')
+    })
+  })
 })

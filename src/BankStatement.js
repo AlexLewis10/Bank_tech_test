@@ -7,6 +7,13 @@ BankStatement.prototype.newStatement = function () {
   return string
 }
 
+BankStatement.prototype._addCreditToStatement = function (date, amount, balance) {
+  var creditString = `\n ${date} || ${amount} || || ${balance}`
+  this.transactionString = `${this.transactionString}` + creditString
+  return this.transactionString
+}
+
 BankStatement.prototype._addDecimalPlaces = function (number) {
   return number.toFixed(2)
 }
+
