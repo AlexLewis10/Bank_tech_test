@@ -31,4 +31,3 @@ BankStatement.prototype._addDebitToStatement = function (date, amount, balance) 
 BankStatement.prototype._addDecimalPlaces = function (number) {
   return number.toFixed(2)
 }
-

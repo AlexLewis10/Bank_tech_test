@@ -1,7 +1,6 @@
 function Account () {
   this.balance = 0
   this.transactionHistory = []
-  this.transactionString = 'date || credit || debit || balance'
 }
 
 Account.prototype.makeDeposit = function (amount, date) {
@@ -22,40 +21,9 @@ Account.prototype.makeWithdrawal = function (amount, date) {
 }
 
 Account.prototype.createBankStatement = function () {
-  this._resetTransactionString()
   var statement = new BankStatement()
   statement = statement.newStatement(this.transactionHistory)
   return statement
-  // here down moved to BankStatement
-  // for (var i = 0; i < this.transactionHistory.length; i++) {
-  //   var date = this.transactionHistory[i][0]
-  //   var amount = this._addDecimalPlaces(this.transactionHistory[i][2])
-  //   var balance = this._addDecimalPlaces(this.transactionHistory[i][3])
-  //   if (this.transactionHistory[i][1] === 'Credit') {
-  //     this._addCreditToStatement(date, amount, balance)
-  //   } else {
-  //     this._addDebitToStatement(date, amount, balance)
-  //   }
-  // }
-  // return this.transactionString
-}
-
-// moved to Bankstatement
-Account.prototype._addCreditToStatement = function (date, amount, balance) {
-  var creditString = `\n ${date} || ${amount} || || ${balance}`
-  this.transactionString = `${this.transactionString}` + creditString
-  return this.transactionString
-}
-
-// moved to BankStatement
-Account.prototype._addDebitToStatement = function (date, amount, balance) {
-  var debitString = `\n ${date} || || ${amount} || ${balance}`
-  this.transactionString = `${this.transactionString}` + debitString
-  return this.transactionString
-}
-
-Account.prototype._resetTransactionString = function () {
-  this.transactionString = 'date || credit || debit || balance'
 }
 
 Account.prototype._formatDate = function (date) {
@@ -65,10 +33,6 @@ Account.prototype._formatDate = function (date) {
 
 Account.prototype._addToTransactionHistory = function (transactionDate, type, amount, accountBalance) {
   this.transactionHistory.unshift([transactionDate, type, amount, accountBalance])
-}
-
-Account.prototype._addDecimalPlaces = function (number) {
-  return number.toFixed(2)
 }
 
 // Method made only for testing purposes
