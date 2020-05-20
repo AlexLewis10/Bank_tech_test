@@ -23,18 +23,21 @@ Account.prototype.makeWithdrawal = function (amount, date) {
 
 Account.prototype.createBankStatement = function () {
   this._resetTransactionString()
+  var statement = new BankStatement()
+  statement = statement.newStatement(this.transactionHistory)
+  return statement
   // here down moved to BankStatement
-  for (var i = 0; i < this.transactionHistory.length; i++) {
-    var date = this.transactionHistory[i][0]
-    var amount = this._addDecimalPlaces(this.transactionHistory[i][2])
-    var balance = this._addDecimalPlaces(this.transactionHistory[i][3])
-    if (this.transactionHistory[i][1] === 'Credit') {
-      this._addCreditToStatement(date, amount, balance)
-    } else {
-      this._addDebitToStatement(date, amount, balance)
-    }
-  }
-  return this.transactionString
+  // for (var i = 0; i < this.transactionHistory.length; i++) {
+  //   var date = this.transactionHistory[i][0]
+  //   var amount = this._addDecimalPlaces(this.transactionHistory[i][2])
+  //   var balance = this._addDecimalPlaces(this.transactionHistory[i][3])
+  //   if (this.transactionHistory[i][1] === 'Credit') {
+  //     this._addCreditToStatement(date, amount, balance)
+  //   } else {
+  //     this._addDebitToStatement(date, amount, balance)
+  //   }
+  // }
+  // return this.transactionString
 }
 
 // moved to Bankstatement
