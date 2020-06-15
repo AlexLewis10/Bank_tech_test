@@ -2,7 +2,9 @@
 
 A simple bank account app in which the user can deposit or withdraw money and get a bank statement.
 
-This project was from week 10 of the course at Makers Academy. The objective of this week is to produce professional quality code. The code should be tested, readable, usable, changeable. It should also have good documentation.
+This project was from week 10 of the course at Makers Academy. The objective of this week is to produce professional quality code. The code should be tested, readable, usable, changeable. 
+
+This is the first attempt at this challenge, for the updated and improved version see bank-tech-test-2.
 
 ## Requirements
 You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
